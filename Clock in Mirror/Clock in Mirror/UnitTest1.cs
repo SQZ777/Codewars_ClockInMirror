@@ -21,7 +21,7 @@ namespace Clock_in_Mirror
     {
         public string WhatIsTheTime(string input)
         {
-            throw new NotImplementedException();
+            return input;
         }
     }
 }

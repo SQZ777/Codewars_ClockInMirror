@@ -13,16 +13,16 @@ namespace Clock_in_Mirror
             var input = "12:00";
             var actual = kata.WhatIsTheTime(input);
             var expected = "12:00";
-            Assert.AreEqual(expected,actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void Input_1201_Should_Be_1159()
+        public void Input_01_Should_Be_59()
         {
             var kata = new Kata();
-            var input = "12:01";
+            var input = "01";
             var actual = kata.WhatIsTheTime(input);
-            var expected = "11:59";
+            var expected = "59";
             Assert.AreEqual(expected, actual);
 
         }
@@ -33,8 +33,17 @@ namespace Clock_in_Mirror
     {
         public string WhatIsTheTime(string input)
         {
+            //cut hour and minute
+            var cutString = input.Split(':');
 
-            return input;
+            //calculate minute
+            var calculated = 60;
+            if (cutString.Length < 2)
+            {
+                calculated -= int.Parse(cutString[0]);
+            }
+
+            return calculated.ToString();
         }
     }
 }

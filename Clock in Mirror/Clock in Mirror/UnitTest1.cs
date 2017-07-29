@@ -7,12 +7,12 @@ namespace Clock_in_Mirror
     public class UnitTest1
     {
         [TestMethod]
-        public void Input_1200_Should_Be_1200()
+        public void Input_00_Should_Be_00()
         {
             var kata = new Kata();
-            var input = "12:00";
+            var input = "00";
             var actual = kata.WhatIsTheTime(input);
-            var expected = "12:00";
+            var expected = "00";
             Assert.AreEqual(expected, actual);
         }
 
@@ -38,10 +38,13 @@ namespace Clock_in_Mirror
 
             //calculate minute
             var calculated = 60;
-            if (cutString.Length < 2)
-            {
-                calculated -= int.Parse(cutString[0]);
-            }
+            calculated -= int.Parse(cutString[0]);
+
+            if (calculated == 60)
+                calculated = 0;
+
+            if (calculated.ToString().Length < 2)
+                return "0" + calculated;
 
             return calculated.ToString();
         }
